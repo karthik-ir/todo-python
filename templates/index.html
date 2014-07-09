@@ -1,0 +1,22 @@
+{% if notdone_tasks_list %}
+		<p>Pending Tasks:</p>
+    <ul>
+    {% for task in notdone_tasks_list %}
+        <li>{{ task.title }}: {{ task.description }} <br/> 
+					Due {{ task.due_date }} <br/> 
+					<a href="/tasks/update/{{ task.id }}/">Update</a> <a href="/tasks/complete/{{ task.id }}/">Complete</a>
+				</li>
+    {% endfor %}
+    </ul>
+		<p>Completed Tasks:</p>
+		<ul>
+    {% for task in done_tasks_list %}
+        <li>{{ task.title }}: {{ task.description }} <br/> 
+					<a href="/tasks/delete/{{ task.id }}/">Delete</a>
+				</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No tasks pending.</p>
+{% endif %}
+<p><a href="/tasks/create/">Add a task</a></p>

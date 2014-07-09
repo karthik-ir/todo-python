@@ -1,0 +1,35 @@
+{% block content %}
+
+{% if object %}
+<h1>Update task:</h1>
+{% else %}
+<h1>Create a Task</h1>
+{% endif %}
+
+{% if form.has_errors %}
+<h3>Please correct the following error{{ form.errors|pluralize }}:</h3>
+{% endif %}
+
+<form method="post" action=".">
+<p><label for="id_title">Title:</label> {{ form.title }}
+{% if form.title.errors %}*** {{ form.title.errors|join:", " }}{% endif %}</p>
+<p><label for="id_description">Description:</label> {{ form.description }}
+{% if form.description.errors %}*** {{ form.description.errors|join:", " }}{% endif %}</p>
+<p><label for="id_create_date_date">Create Date:</label> {{ form.create_date_date }}
+{% if form.create_date_date.errors %}*** {{ form.create_date_date.errors|join:", " }}{% endif %}</p>
+<p><label for="id_create_date_time">Create Time:</label> {{ form.create_date_time }}
+{% if form.create_date_time.errors %}*** {{ form.create_date_time.errors|join:", " }}{% endif %}</p>
+<p><label for="id_due_date_date">Due Date:</label> {{ form.due_date_date }}
+{% if form.due_date_date.errors %}*** {{ form.due_date_date.errors|join:", " }}{% endif %}</p>
+<p><label for="id_due_date_time">Due Time:</label> {{ form.due_date_time }}
+{% if form.due_date_time.errors %}*** {{ form.due_date_time.errors|join:", " }}{% endif %}</p>
+<p><label for="id_done">Done:</label> {{ form.done }}
+{% if form.done.errors %}*** {{ form.done.errors|join:", " }}{% endif %}</p>
+<input type="submit" />
+</form>
+<!--
+This is a lifesaver when debugging!
+<p> {{ form.error_dict }} </p>
+-->
+
+{% endblock %}
